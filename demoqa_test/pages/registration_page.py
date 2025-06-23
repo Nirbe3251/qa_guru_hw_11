@@ -3,6 +3,9 @@ import os
 from selene import browser, have
 
 class RegistrationPages:
+    def browser_open(self, value):
+        browser.open(value)
+
     def fill_first_name(self, value):
         browser.element("#firstName").type(value)
 

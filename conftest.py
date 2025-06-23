@@ -12,7 +12,7 @@ def setup_browser():
         "browserVersion": "100.0",
         "selenoid:options": {
             "enableVNC": True,
-            "enableVideo": False
+            "enableVideo": True
         }
     }
 
@@ -23,8 +23,6 @@ def setup_browser():
 
     browser.config.driver = driver
 
-@pytest.fixture
-def open_browser():
-    browser.open("https://demoqa.com/automation-practice-form")
     yield
+
     browser.quit()

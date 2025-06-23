@@ -1,8 +1,9 @@
 from demoqa_test.pages.registration_page import RegistrationPages
 
-def test_form(open_browser):
+def test_form():
     registration_page = RegistrationPages()
 
+    registration_page.browser_open("https://demoqa.com/automation-practice-form")
     registration_page.fill_first_name("Daniil")
     registration_page.fill_last_name("Efimow")
     registration_page.fill_email("daniil.efimow@mail.ru")
