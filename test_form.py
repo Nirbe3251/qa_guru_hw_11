@@ -1,6 +1,6 @@
 from demoqa_test.pages.registration_page import RegistrationPages
 
-def test_form():
+def test_form(setup_browser):
     registration_page = RegistrationPages()
 
     registration_page.browser_open("https://demoqa.com/automation-practice-form")
