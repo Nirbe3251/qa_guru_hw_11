@@ -1,18 +1,18 @@
 import allure
 from allure_commons.types import AttachmentType
-
+from selene import browser
 # Скриншоты
 def add_screenshot(browser):
     png = browser.driver.get_screenshot_as_png()
     allure.attach(body=png, name='screenshot', attachment_type=AttachmentType.PNG, extension='.png')
 
 # логи
-def add_logs(browser):
+def add_logs():
     try:
-       logs = browser.execute("getlog", {"type": 'browser'})["value"]
-       log_text = "\n".join(str(log) for log in logs)
+        logs = browser.driver.get_log('browser')
+        log_text = "\n".join(f"{log['level']} - {log['message']}" for log in logs)
     except Exception as e:
-       log_text = f"Логи недоступны: {e}"
+        log_text = f"Логи недоступны: {e}"
     allure.attach(log_text, 'browser_logs', AttachmentType.TEXT)
 
 # html-код страницы

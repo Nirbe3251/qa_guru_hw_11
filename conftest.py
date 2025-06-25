@@ -10,13 +10,14 @@ from utils import attach
 @pytest.fixture(scope="function", autouse=True)
 def setup_browser():
     options = Options()
+    options.set_capability('goog:loggingPrefs', {'browser': 'ALL'})
     selenoid_capabilities = {
         "browserName": "chrome",
         "browserVersion": "127.0",
         "selenoid:options": {
             "enableVNC": True,
             "enableVideo": True,
-            "enableLog": True
+            #"enableLog": True
         }
     }
 
@@ -31,7 +32,7 @@ def setup_browser():
 
     attach.add_html(browser)
     attach.add_screenshot(browser)
-    attach.add_logs(browser)
+    attach.add_logs()
     attach.add_video(browser)
 
     browser.quit()
