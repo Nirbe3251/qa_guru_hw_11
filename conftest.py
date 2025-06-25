@@ -17,7 +17,6 @@ def setup_browser():
         "selenoid:options": {
             "enableVNC": True,
             "enableVideo": True,
-            #"enableLog": True
         }
     }
 
