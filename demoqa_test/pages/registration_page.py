@@ -1,6 +1,6 @@
 import os
+from selene import browser, have, be, command
 
-from selene import browser, have
 
 class RegistrationPages:
     def browser_open(self, value):
@@ -33,9 +33,9 @@ class RegistrationPages:
         browser.element("#subjectsInput").type(value).press_enter()
 
     def fill_checkbox(self):
-        browser.element("[for=hobbies-checkbox-1]").click()
-        browser.element("[for=hobbies-checkbox-2]").click()
-        browser.element("[for=hobbies-checkbox-3]").click()
+        browser.element("#hobbies-checkbox-1").perform(command.js.click)
+        browser.element("#hobbies-checkbox-2").perform(command.js.click)
+        browser.element("#hobbies-checkbox-3").perform(command.js.click)
 
     def upload_file(self, value):
         browser.element('#uploadPicture').send_keys(os.path.abspath(value))
@@ -50,7 +50,7 @@ class RegistrationPages:
         browser.element("#react-select-4-input").type(value).press_enter()
 
     def click_submit(self):
-        browser.element("#submit").click()
+        browser.element("#submit").should(be.clickable).click()
 
     def should_registered_user_with(self, full_name, email, gender, phone, date_of_birth, subjects, hobbies, picture, current_address, state_and_city):
         browser.element('.table').all('td').even.should(
