@@ -50,7 +50,7 @@ class RegistrationPages:
         browser.element("#react-select-4-input").type(value).press_enter()
 
     def click_submit(self):
-        browser.element("#submit").should(be.clickable).click()
+        browser.element("#submit").perform(command.js.click)
 
     def should_registered_user_with(self, full_name, email, gender, phone, date_of_birth, subjects, hobbies, picture, current_address, state_and_city):
         browser.element('.table').all('td').even.should(
